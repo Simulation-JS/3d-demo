@@ -4,8 +4,10 @@ import {
   Cube,
   frameLoop,
   Vector,
-  Color,
   radToDeg,
+  SceneCollection,
+  LightSource,
+  Color,
 } from 'simulationjs';
 
 const canvas = new Simulation(
@@ -14,24 +16,28 @@ const canvas = new Simulation(
   new Vector3(0, 0, 0)
 );
 canvas.fitElement();
+canvas.setAmbientLighting(0.4);
+
+const test = new SceneCollection('test');
+canvas.add(test);
 
 const cube = new Cube(
   new Vector3(0, 0, 0),
   100,
   100,
   100,
-  new Color(0, 123, 255, 0.3),
+  new Color(0, 123, 255),
   new Vector3(0, 0, 0),
   true,
   true,
   true
 );
-canvas.add(cube);
+test.add(cube);
 
-canvas.setLightSources([new Vector3(100, 100, -100)]);
+canvas.addLightSource(new LightSource(new Vector3(-100, -100, 100)));
 
 (async function main() {
-  await cube.rotate(new Vector3(360, 360, 0), 4);
+  await cube.rotate(new Vector3(360, 360, 0), 8);
   main();
 })();
 
