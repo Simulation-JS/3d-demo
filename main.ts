@@ -8,17 +8,17 @@ import {
   SceneCollection,
   LightSource,
   Color,
-} from 'simulationjs';
+} from "simulationjs";
 
 const canvas = new Simulation(
-  'canvas',
+  "canvas",
   new Vector3(0, 0, -250),
   new Vector3(0, 0, 0)
 );
 canvas.fitElement();
-canvas.setAmbientLighting(0.4);
+// canvas.setAmbientLighting(0.4);
 
-const test = new SceneCollection('test');
+const test = new SceneCollection("test");
 canvas.add(test);
 
 const cube = new Cube(
@@ -53,7 +53,7 @@ const keydownEvents = {
   a: () => (pressingA = true),
   s: () => (pressingS = true),
   d: () => (pressingD = true),
-  ' ': () => (pressingSpace = true),
+  " ": () => (pressingSpace = true),
   shift: () => (pressingShift = true),
 };
 
@@ -62,21 +62,21 @@ const keyupEvents = {
   a: () => (pressingA = false),
   s: () => (pressingS = false),
   d: () => (pressingD = false),
-  ' ': () => (pressingSpace = false),
+  " ": () => (pressingSpace = false),
   shift: () => (pressingShift = false),
 };
 
 let looking = false;
-canvas.on('mousedown', () => {
+canvas.on("mousedown", () => {
   looking = true;
 });
 
-canvas.on('mouseup', () => {
+canvas.on("mouseup", () => {
   looking = false;
 });
 
 let prev = new Vector(0, 0);
-canvas.on('mousemove', (e: MouseEvent) => {
+canvas.on("mousemove", (e: MouseEvent) => {
   const dampen = 1000;
   const point = new Vector(e.offsetX, e.offsetY);
   if (looking) {
@@ -91,12 +91,12 @@ canvas.on('mousemove', (e: MouseEvent) => {
   prev = point;
 });
 
-addEventListener('keydown', (e: KeyboardEvent) => {
+addEventListener("keydown", (e: KeyboardEvent) => {
   const f = keydownEvents[e.key.toLowerCase()];
   f && f();
 });
 
-addEventListener('keyup', (e: KeyboardEvent) => {
+addEventListener("keyup", (e: KeyboardEvent) => {
   const f = keyupEvents[e.key.toLowerCase()];
   f && f();
 });
