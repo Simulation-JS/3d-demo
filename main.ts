@@ -22,7 +22,7 @@ const test = new SceneCollection("test");
 canvas.add(test);
 
 const cube = new Cube(
-  new Vector3(0, 0, 0),
+  new Vector3(800, 100, 0),
   100,
   100,
   100,
@@ -77,7 +77,7 @@ canvas.on("mouseup", () => {
 
 let prev = new Vector(0, 0);
 canvas.on("mousemove", (e: MouseEvent) => {
-  const dampen = 1000;
+  const dampen = 1000 * canvas.ratio;
   const point = new Vector(e.offsetX, e.offsetY);
   if (looking) {
     const amount = new Vector(
