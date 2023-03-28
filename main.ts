@@ -22,7 +22,7 @@ const test = new SceneCollection("test");
 canvas.add(test);
 
 const cube = new Cube(
-  new Vector3(800, 100, 0),
+  new Vector3(0, 0, 0),
   100,
   100,
   100,
